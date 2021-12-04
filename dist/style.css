@@ -1,0 +1,32 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+
+h1{
+  font-size: xx-large;
+}
+
+h2{
+  font-size: x-large;
+}
+
+header {
+  height: 200px;
+  background-color: crimson;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.card {
+  box-shadow: 3px 3px 3px darkgray;
+  border: solid 2px black;
+  border-radius: 5px;
+}
