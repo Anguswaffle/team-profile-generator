@@ -1,6 +1,8 @@
+// Importing dependencies
 const fs = require('fs');
 const inquirer = require('inquirer');
 
+// Importing local dependencies
 const generateHTML = require('./src/generateHTML.js');
 const Manager = require('./lib/manager.js');
 const Engineer = require('./lib/engineer.js');
@@ -9,23 +11,24 @@ const Intern = require('./lib/intern.js');
 // Default employee is manager
 let employee = 'Manager';
 
+// Returns array of employees
 const collectInputs = async (inputs = []) => {
-  // Questions array
+  // Questions array using template literals
   const questions = [
     {
       type: 'input',
       name: 'name',
-      message: `Enter the ${employee}\'s name:`
+      message: `Enter the ${employee}'s name:`
     },
     {
       type: 'input',
       name: 'id',
-      message: `Enter the ${employee}\'s ID number:`
+      message: `Enter the ${employee}'s ID number:`
     },
     {
       type: 'input',
       name: 'email',
-      message: `Enter the ${employee}\'s email:`
+      message: `Enter the ${employee}'s email:`
     },
     {
       type: 'input',
@@ -36,13 +39,13 @@ const collectInputs = async (inputs = []) => {
     {
       type: 'input',
       name: 'github',
-      message: `Enter the Engineer\'s GitHub username:`,
+      message: `Enter the Engineer's GitHub username:`,
       when: employee === 'Engineer'
     },
     {
       type: 'input',
       name: 'school',
-      message: `Enter the Intern\'s school:`,
+      message: `Enter the Intern's school:`,
       when: employee === 'Intern'
     },
     {
@@ -59,13 +62,19 @@ const collectInputs = async (inputs = []) => {
       when: (answers) => answers.again === true
     }
   ]
+  // again and the other answers are deconstructed from each round of questions
   const { again, ...answers } = await inquirer.prompt(questions)
+  // Answers are passed in to addEmployee which is stored in to an array of other employees
   const newInputs = [...inputs, addEmployee(answers)];
+  // Next employee is changed based on user choice
   employee = answers.nextEmployee;
+  // Checks to see if a new employee is needed, 
+  // If yes, function is run again
+  // If not, returns array of employees
   return again ? collectInputs(newInputs) : newInputs;
 }
 
-// Returns an employee to be added to the array
+// Returns an employee
 const addEmployee = (answers) => {
   switch (employee){
   case 'Manager': return new Manager(answers);
@@ -74,7 +83,7 @@ const addEmployee = (answers) => {
   }
 }
 
-// 
+// Generates HTML file based on array of employees
 const writeToFile = (employees) => {
   const markdownStr = generateHTML(employees)
   fs.writeFile('./dist/index.html', markdownStr, (err) =>

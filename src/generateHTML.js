@@ -1,4 +1,5 @@
 
+// Generates HTML string for each employee's card
 const renderCards = (employees) => {
   const cards = employees.map(employee => {
     return `<div class='card'>
@@ -14,17 +15,20 @@ const renderCards = (employees) => {
     </div>
   </div>`
   })
+  // Joins array into a string
   return cards.join('');
 }
 
+// Generates the sections that are unique to each employee
 const uniqueSection = (employee) => {
   switch (employee.getRole()){
     case 'Manager': return `<p>Office Number: ${employee.getOfficeNumber()}</p>`
-    case 'Engineer': return `<p>GitHub: </p><a href="https://www.github.com/${employee.getGithub()}">${employee.getGithub()}</a>`
+    case 'Engineer': return `<p>GitHub:</p><a href="https://www.github.com/${employee.getGithub()}">${employee.getGithub()}</a>`
     case 'Intern': return `<p>School: ${employee.getSchool()}</p>`
   }
 }
 
+// Generates the entire HTML string
 const generateHTML = (employees) => {
   return `<!DOCTYPE html>
   <html lang="en">
