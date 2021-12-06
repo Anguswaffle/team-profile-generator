@@ -30,11 +30,16 @@ main {
   box-shadow: 3px 3px 3px darkgray;
   border: solid 2px black;
   border-radius: 5px;
-  width: 200px;
+  width: 250px;
   margin: 15px;
+  height: fit-content;
 }
 
 .card-header {
   height: 60px;
   text-align: start;
+}
+
+.card-content a, .card-content p {
+  margin: 10px 5px;
 }
