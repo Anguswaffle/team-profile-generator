@@ -1,7 +1,7 @@
 
 const renderCards = (employees) => {
   const cards = employees.map(employee => {
-    `<div class='card'>
+    return `<div class='card'>
     <div class='card-header'>
       <h1>${employee.getName()}</h1>
       <h2>${employee.getRole()}</h2>
@@ -14,6 +14,7 @@ const renderCards = (employees) => {
     </div>
   </div>`
   })
+  console.log(cards)
   return cards;
 }
 
@@ -26,7 +27,7 @@ const uniqueSection = (employee) => {
 }
 
 const generateHTML = (employees) => {
-  `<!DOCTYPE html>
+  return `<!DOCTYPE html>
   <html lang="en">
   
   <head>
@@ -45,7 +46,7 @@ const generateHTML = (employees) => {
     </header>
   
     <main>
-    ${renderCards(employees)}
+    ${renderCards(employees).join('')}
     </main>
   
   

@@ -77,7 +77,7 @@ const addEmployee = (answers) => {
 // 
 const writeToFile = (employees) => {
   const markdownStr = generateHTML(employees)
-  fs.writeFile('index.html', markdownStr, (err) =>
+  fs.writeFile('./dist/index.html', markdownStr, (err) =>
     err ? console.log(err) : console.log('Successfully created index.html'))
 }
 
