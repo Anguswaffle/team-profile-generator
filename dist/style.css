@@ -22,11 +22,19 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 80%;
+  justify-content: center;
+
 }
 
 .card {
   box-shadow: 3px 3px 3px darkgray;
   border: solid 2px black;
   border-radius: 5px;
+  width: 200px;
+  margin: 15px;
+}
+
+.card-header {
+  height: 60px;
+  text-align: start;
 }
