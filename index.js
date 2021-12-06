@@ -10,7 +10,6 @@ const Intern = require('./lib/intern.js');
 let employee = 'Manager';
 
 const collectInputs = async (inputs = []) => {
-
   // Questions array
   const questions = [
     {
@@ -75,7 +74,14 @@ const addEmployee = (answers) => {
   }
 }
 
-// Gets 
+// 
+const writeToFile = (employees) => {
+  const markdownStr = generateHTML(employees)
+  fs.writeFile('index.html', markdownStr, (err) =>
+    err ? console.log(err) : console.log('Successfully created index.html'))
+}
+
+// Gets an array of Employee objects and passes them to writeToFile
 const init = async () => {
   const employees = await collectInputs();
   writeToFile(employees)
