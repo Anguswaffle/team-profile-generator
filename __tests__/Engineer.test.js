@@ -16,7 +16,7 @@ describe('Engineer Class', () => {
       const info = { name: 'Eliza', id: '123', email: 'dog@email.com', github: 'testThis' };
       const liza = new Engineer(info);
 
-      expect(liza.getGithub()).toBe(`https://github.com/${info.github}/`)
+      expect(liza.getGithub()).toBe(info.github)
     });
   });
 
