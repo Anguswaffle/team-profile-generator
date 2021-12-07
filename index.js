@@ -18,35 +18,72 @@ const collectInputs = async (inputs = []) => {
     {
       type: 'input',
       name: 'name',
-      message: `Enter the ${employee}'s name:`
+      message: `Enter the ${employee}'s name:`,
+      validate: name => {
+        if(name) {
+          return true;
+        }
+        return `The ${employee} must have a name.`
+      }
     },
     {
       type: 'input',
       name: 'id',
-      message: `Enter the ${employee}'s ID number:`
+      message: `Enter the ${employee}'s ID number:`,
+      validate: id => {
+        if(id) {
+          return true;
+        }
+        return `The ${employee} must have an ID.`
+      }
     },
     {
       type: 'input',
       name: 'email',
-      message: `Enter the ${employee}'s email:`
+      message: `Enter the ${employee}'s email:`,
+      validate: email => {
+        const pass = (email.includes('@') && email.includes('.'))
+        if(pass) {
+          return true;
+        }
+        return `Please enter a valid email.`
+      }
     },
     {
       type: 'input',
       name: 'officeNumber',
       message: `Enter the Manager's office number:`,
-      when: employee === 'Manager'
+      when: employee === 'Manager',
+      validate: officeNumber => {
+        if(officeNumber) {
+          return true;
+        }
+        return `The Manager must have an office number.`
+      }
     },
     {
       type: 'input',
       name: 'github',
       message: `Enter the Engineer's GitHub username:`,
-      when: employee === 'Engineer'
+      when: employee === 'Engineer',
+      validate: github => {
+        if(github) {
+          return true;
+        }
+        return `The Engineer must have a github.`
+      }
     },
     {
       type: 'input',
       name: 'school',
       message: `Enter the Intern's school:`,
-      when: employee === 'Intern'
+      when: employee === 'Intern',
+      validate: school => {
+        if(school) {
+          return true;
+        }
+        return `The Intern must have a school.`
+      }
     },
     {
       type: 'confirm',
