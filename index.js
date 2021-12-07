@@ -1,4 +1,4 @@
-// Importing dependencies
+// Importing node dependencies
 const fs = require('fs');
 const inquirer = require('inquirer');
 
@@ -12,7 +12,7 @@ const Intern = require('./lib/intern.js');
 let employee = 'Manager';
 
 // Returns array of employees
-const collectInputs = async (inputs = []) => {
+const collectEmployees = async (employees = []) => {
   // Questions array using template literals
   const questions = [
     {
@@ -101,14 +101,14 @@ const collectInputs = async (inputs = []) => {
   ]
   // again and the other answers are deconstructed from each round of questions
   const { again, ...answers } = await inquirer.prompt(questions)
-  // Answers are passed in to addEmployee which is stored in to an array of other employees
-  const newInputs = [...inputs, addEmployee(answers)];
+  // Answers are passed in to addEmployee which is stored in an array of other employees
+  const newEmployees = [...employees, addEmployee(answers)];
   // Next employee is changed based on user choice
   employee = answers.nextEmployee;
   // Checks to see if a new employee is needed, 
-  // If yes, function is run again
-  // If not, returns array of employees
-  return again ? collectInputs(newInputs) : newInputs;
+  // If true, function is run again
+  // If false, returns array of employees
+  return again ? collectEmployees(newEmployees) : newEmployees;
 }
 
 // Returns an employee
@@ -121,16 +121,16 @@ const addEmployee = (answers) => {
 }
 
 // Generates HTML file based on array of employees
-const writeToFile = (employees) => {
-  const markdownStr = generateHTML(employees)
+const writeToFile = (team) => {
+  const markdownStr = generateHTML(team)
   fs.writeFile('./dist/index.html', markdownStr, (err) =>
     err ? console.log(err) : console.log('Successfully created index.html'))
 }
 
 // Gets an array of Employee objects and passes them to writeToFile
 const init = async () => {
-  const employees = await collectInputs();
-  writeToFile(employees)
+  const team = await collectEmployees();
+  writeToFile(team)
 }
 
 init();
