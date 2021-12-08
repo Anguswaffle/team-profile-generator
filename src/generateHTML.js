@@ -39,7 +39,6 @@ const generateHTML = (employees) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/reset.css">
     <link rel="stylesheet" href="../dist/style.css">
-    <script src="https://kit.fontawesome.com/fe5edbfe59.js" crossorigin="anonymous"></script>
     <title>My Team</title>
   </head>
   

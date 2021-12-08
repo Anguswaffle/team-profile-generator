@@ -8,7 +8,7 @@
 
   https://drive.google.com/file/d/1NVV9UvvRE6j-0yjnrhrCuGtXJSn5YsbN/view
 
-  ![Team Profile Preview](/assets/team-profile-preview.jpg)
+  ![Team Profile Preview](./assets/team-profile-preview.jpg)
 
   ### Table of Contents
 
